@@ -1,0 +1,171 @@
+export default function Page() {
+  return (
+    <main className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Top Bar */}
+      <header className="border-b bg-white">
+        <div className="mx-auto max-w-5xl px-6 py-6">
+          <h1 className="text-3xl font-bold">Harish Reddy Chada</h1>
+          <p className="mt-1 text-sm text-gray-600">
+            Lean Six Sigma Green Belt | Industrial Engineer | Continuous Improvement | Manufacturing Optimization
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            {/* Replace these with your real links */}
+            <a
+              href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+              target="_blank"
+              className="rounded-xl bg-black px-4 py-2 text-sm font-medium text-white shadow"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="mailto:YOUR.EMAIL@gmail.com"
+              className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow"
+            >
+              Email Me
+            </a>
+            <a
+              href="#projects"
+              className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Content */}
+      <div className="mx-auto max-w-5xl px-6 py-10 space-y-10">
+        {/* About */}
+        <section className="rounded-2xl bg-white p-8 shadow">
+          <h2 className="text-xl font-semibold">About Me</h2>
+          <p className="mt-3 leading-relaxed text-gray-700">
+            I’m a Lean Six Sigma Green Belt–certified Industrial Engineer with 5+ years of experience improving
+            throughput, quality, and efficiency in high-volume manufacturing environments. I specialize in time studies,
+            line balancing, value stream mapping, layout optimization, standard work, and KPI dashboards (Excel / Power BI).
+            My strength is connecting data analysis with shop-floor execution to deliver sustainable results.
+          </p>
+        </section>
+
+        {/* Skills */}
+        <section className="rounded-2xl bg-white p-8 shadow">
+          <h2 className="text-xl font-semibold">Core Competencies</h2>
+          <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
+            {[
+              "Lean Six Sigma (DMAIC)",
+              "Time & Motion Studies",
+              "Line Balancing",
+              "Takt Time & Capacity Planning",
+              "Value Stream Mapping",
+              "Standard Work",
+              "5S & Kaizen",
+              "OEE / Downtime Reduction",
+              "SPC (Cp, Cpk) & MSA (Gauge R&R)",
+              "PFMEA / Risk Assessment",
+              "Layout Optimization (Spaghetti)",
+              "Excel / Power BI Dashboards",
+            ].map((skill) => (
+              <div key={skill} className="rounded-xl bg-gray-100 px-4 py-3 text-sm">
+                {skill}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Experience */}
+        <section className="rounded-2xl bg-white p-8 shadow">
+          <h2 className="text-xl font-semibold">Experience</h2>
+
+          <div className="mt-6 space-y-6">
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+                <h3 className="text-lg font-bold">Production Intern — Polaris Industries</h3>
+                <span className="text-sm text-gray-500">Roseau, MN</span>
+              </div>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
+                <li>Conducted time studies and identified bottlenecks to improve flow and balance work content.</li>
+                <li>Used VSM and spaghetti diagrams to reduce non-value-added movement and improve layout efficiency.</li>
+                <li>Implemented standard work and visual controls to improve consistency and reduce variation.</li>
+                <li>Built KPI dashboards (cycle time, FPY, scrap, OEE) using Excel and Power BI.</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+                <h3 className="text-lg font-bold">Design Engineer → Senior → Lead — Tech Mahindra</h3>
+                <span className="text-sm text-gray-500">2019–2023</span>
+              </div>
+              <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
+                <li>Applied DFMA to improve manufacturability and reduce assembly complexity.</li>
+                <li>Led cross-functional problem solving using RCA (5 Whys), 8D, and corrective actions.</li>
+                <li>Supported APQP/PPAP documentation and process readiness for production.</li>
+                <li>Improved product quality and reduced rework through design/process alignment.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section id="projects" className="rounded-2xl bg-white p-8 shadow">
+          <h2 className="text-xl font-semibold">Project Highlights</h2>
+
+          <div className="mt-6 grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <h3 className="text-base font-bold">Assembly Line Optimization</h3>
+              <p className="mt-2 text-sm text-gray-700">
+                Used time studies and workload balancing to improve line stability and increase throughput.
+              </p>
+              <div className="mt-4 text-sm text-gray-600">
+                <span className="font-medium text-gray-900">Tools:</span> Time Study, Line Balancing, Standard Work
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <h3 className="text-base font-bold">Scrap / FPY Improvement</h3>
+              <p className="mt-2 text-sm text-gray-700">
+                Analyzed scrap trends and drove corrective actions to improve first-pass yield and reduce defects.
+              </p>
+              <div className="mt-4 text-sm text-gray-600">
+                <span className="font-medium text-gray-900">Tools:</span> Pareto, DMAIC, 5 Whys
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <h3 className="text-base font-bold">Layout Optimization</h3>
+              <p className="mt-2 text-sm text-gray-700">
+                Reduced unnecessary movement and improved ergonomics through workstation reconfiguration.
+              </p>
+              <div className="mt-4 text-sm text-gray-600">
+                <span className="font-medium text-gray-900">Tools:</span> Spaghetti Diagram, 5S, Visual Controls
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-gray-200 p-6">
+              <h3 className="text-base font-bold">KPI Dashboarding</h3>
+              <p className="mt-2 text-sm text-gray-700">
+                Built dashboards for cycle time, OEE, scrap %, and FPY to enable proactive daily management.
+              </p>
+              <div className="mt-4 text-sm text-gray-600">
+                <span className="font-medium text-gray-900">Tools:</span> Excel, Power BI
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Education */}
+        <section className="rounded-2xl bg-white p-8 shadow">
+          <h2 className="text-xl font-semibold">Education & Certification</h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-700">
+            <li>MS in Technology (Industrial Management) — University of Central Missouri (Summer 2025)</li>
+            <li>Lean Six Sigma Green Belt Certified</li>
+          </ul>
+        </section>
+
+        {/* Footer */}
+        <footer className="pb-10 text-center text-sm text-gray-500">
+          © {new Date().getFullYear()} Harish Reddy Chada • Continuous Improvement • Manufacturing Excellence
+        </footer>
+      </div>
+    </main>
+  );
+}
