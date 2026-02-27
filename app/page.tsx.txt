@@ -1,171 +1,531 @@
-export default function Page() {
-  return (
-    <main className="min-h-screen bg-gray-50 text-gray-900">
-      {/* Top Bar */}
-      <header className="border-b bg-white">
-        <div className="mx-auto max-w-5xl px-6 py-6">
-          <h1 className="text-3xl font-bold">Harish Reddy Chada</h1>
-          <p className="mt-1 text-sm text-gray-600">
-            Lean Six Sigma Green Belt | Industrial Engineer | Continuous Improvement | Manufacturing Optimization
-          </p>
+"use client";
 
-          <div className="mt-4 flex flex-wrap gap-3">
-            {/* Replace these with your real links */}
+import React from "react";
+import {
+  ResponsiveContainer,
+  RadarChart,
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+} from "recharts";
+
+const skillsRadar = [
+  { skill: "Lean / CI", score: 90 },
+  { skill: "Time Study", score: 88 },
+  { skill: "Line Balance", score: 86 },
+  { skill: "VSM", score: 84 },
+  { skill: "Quality", score: 82 },
+  { skill: "Data (Excel/BI)", score: 80 },
+];
+
+const impactBars = [
+  { metric: "Cycle Time", value: 15 },
+  { metric: "Workflow", value: 20 },
+  { metric: "Onboarding", value: 25 },
+];
+
+const projects = [
+  {
+    title: "Assembly Line Optimization",
+    desc: "Time studies + line balancing to stabilize flow, reduce variation, and improve throughput.",
+    tags: ["Time Study", "Line Balancing", "Standard Work"],
+    badge: "Factory Flow",
+  },
+  {
+    title: "Scrap / FPY Improvement",
+    desc: "Pareto + DMAIC + RCA to reduce scrap drivers and improve first-pass yield.",
+    tags: ["DMAIC", "Pareto", "5 Whys"],
+    badge: "Quality Win",
+  },
+  {
+    title: "Layout Optimization",
+    desc: "Spaghetti diagram + 5S to cut motion waste and improve ergonomics.",
+    tags: ["5S", "Spaghetti", "Ergonomics"],
+    badge: "Lean Layout",
+  },
+  {
+    title: "KPI Dashboarding",
+    desc: "Built Excel/Power BI dashboards for cycle time, OEE, scrap %, FPY to drive daily actions.",
+    tags: ["Excel", "Power BI", "Daily Mgmt"],
+    badge: "Data Visibility",
+  },
+];
+
+const certs = [
+  { title: "Lean Six Sigma Green Belt", org: "Certified", year: "Active" },
+  { title: "MS in Technology (Industrial Management)", org: "University of Central Missouri", year: "Summer 2025" },
+];
+
+export default function Page() {
+  const linkedIn = "https://www.linkedin.com/in/YOUR-LINKEDIN"; // change
+  const email = "mailto:YOUR.EMAIL@gmail.com"; // change
+  const resumePath = "/Harish_Reddy_Chada_Resume.pdf"; // put PDF in /public
+
+  return (
+    <main className="min-h-screen bg-slate-950 text-white">
+      {/* Background glow */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden">
+        <div className="absolute -top-40 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-fuchsia-500/25 blur-3xl" />
+        <div className="absolute top-40 -left-20 h-[420px] w-[420px] rounded-full bg-cyan-400/20 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-[520px] w-[520px] rounded-full bg-emerald-400/15 blur-3xl" />
+      </div>
+
+      {/* Nav */}
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/70 backdrop-blur">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+          <a href="#home" className="font-bold tracking-wide">
+            Harish Reddy Chada
+          </a>
+
+          <nav className="hidden gap-5 text-sm text-white/75 md:flex">
+            {["about", "experience", "projects", "skills", "certifications", "contact"].map((id) => (
+              <a key={id} href={`#${id}`} className="hover:text-white">
+                {id[0].toUpperCase() + id.slice(1)}
+              </a>
+            ))}
+          </nav>
+
+          <div className="flex items-center gap-2">
             <a
-              href="https://www.linkedin.com/in/YOUR-LINKEDIN"
+              href={resumePath}
               target="_blank"
-              className="rounded-xl bg-black px-4 py-2 text-sm font-medium text-white shadow"
+              className="rounded-xl bg-white px-3 py-2 text-xs font-semibold text-slate-900 hover:bg-white/90"
             >
-              LinkedIn
+              Resume
             </a>
             <a
-              href="mailto:YOUR.EMAIL@gmail.com"
-              className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow"
+              href={email}
+              className="rounded-xl border border-white/15 px-3 py-2 text-xs font-semibold hover:bg-white/5"
             >
-              Email Me
-            </a>
-            <a
-              href="#projects"
-              className="rounded-xl border border-gray-300 bg-white px-4 py-2 text-sm font-medium shadow"
-            >
-              View Projects
+              Email
             </a>
           </div>
         </div>
       </header>
 
-      {/* Content */}
-      <div className="mx-auto max-w-5xl px-6 py-10 space-y-10">
-        {/* About */}
-        <section className="rounded-2xl bg-white p-8 shadow">
-          <h2 className="text-xl font-semibold">About Me</h2>
-          <p className="mt-3 leading-relaxed text-gray-700">
-            I’m a Lean Six Sigma Green Belt–certified Industrial Engineer with 5+ years of experience improving
-            throughput, quality, and efficiency in high-volume manufacturing environments. I specialize in time studies,
-            line balancing, value stream mapping, layout optimization, standard work, and KPI dashboards (Excel / Power BI).
-            My strength is connecting data analysis with shop-floor execution to deliver sustainable results.
-          </p>
-        </section>
-
-        {/* Skills */}
-        <section className="rounded-2xl bg-white p-8 shadow">
-          <h2 className="text-xl font-semibold">Core Competencies</h2>
-          <div className="mt-5 grid grid-cols-2 gap-3 md:grid-cols-3">
-            {[
-              "Lean Six Sigma (DMAIC)",
-              "Time & Motion Studies",
-              "Line Balancing",
-              "Takt Time & Capacity Planning",
-              "Value Stream Mapping",
-              "Standard Work",
-              "5S & Kaizen",
-              "OEE / Downtime Reduction",
-              "SPC (Cp, Cpk) & MSA (Gauge R&R)",
-              "PFMEA / Risk Assessment",
-              "Layout Optimization (Spaghetti)",
-              "Excel / Power BI Dashboards",
-            ].map((skill) => (
-              <div key={skill} className="rounded-xl bg-gray-100 px-4 py-3 text-sm">
-                {skill}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Experience */}
-        <section className="rounded-2xl bg-white p-8 shadow">
-          <h2 className="text-xl font-semibold">Experience</h2>
-
-          <div className="mt-6 space-y-6">
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="text-lg font-bold">Production Intern — Polaris Industries</h3>
-                <span className="text-sm text-gray-500">Roseau, MN</span>
-              </div>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
-                <li>Conducted time studies and identified bottlenecks to improve flow and balance work content.</li>
-                <li>Used VSM and spaghetti diagrams to reduce non-value-added movement and improve layout efficiency.</li>
-                <li>Implemented standard work and visual controls to improve consistency and reduce variation.</li>
-                <li>Built KPI dashboards (cycle time, FPY, scrap, OEE) using Excel and Power BI.</li>
-              </ul>
+      {/* Hero */}
+      <section id="home" className="mx-auto max-w-6xl px-6 py-14 md:py-20">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          <div className="space-y-5">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs text-white/80">
+              <span className="h-2 w-2 rounded-full bg-emerald-400" />
+              Open to Manufacturing / Industrial / CI roles
             </div>
 
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="text-lg font-bold">Design Engineer → Senior → Lead — Tech Mahindra</h3>
-                <span className="text-sm text-gray-500">2019–2023</span>
-              </div>
-              <ul className="mt-3 list-disc space-y-2 pl-5 text-gray-700">
-                <li>Applied DFMA to improve manufacturability and reduce assembly complexity.</li>
-                <li>Led cross-functional problem solving using RCA (5 Whys), 8D, and corrective actions.</li>
-                <li>Supported APQP/PPAP documentation and process readiness for production.</li>
-                <li>Improved product quality and reduced rework through design/process alignment.</li>
-              </ul>
+            <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+              I improve <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-fuchsia-300 to-emerald-300">throughput</span>,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-cyan-300 to-fuchsia-300">quality</span>, and{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-300 via-emerald-300 to-cyan-300">flow</span>.
+            </h1>
+
+            <p className="text-white/80">
+              I’m a Lean Six Sigma Green Belt–certified Industrial Engineer with 5+ years of experience in manufacturing optimization.
+              I focus on time studies, line balancing, VSM, standard work, and KPI dashboards (Excel/Power BI) to deliver measurable results.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href={linkedIn}
+                target="_blank"
+                className="rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950 hover:opacity-95"
+              >
+                LinkedIn
+              </a>
+              <a
+                href={resumePath}
+                target="_blank"
+                className="rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold hover:bg-white/5"
+              >
+                View Resume
+              </a>
+              <a
+                href="#projects"
+                className="rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold hover:bg-white/5"
+              >
+                View Projects
+              </a>
+            </div>
+
+            {/* Mini “presentation blocks” */}
+            <div className="grid gap-3 pt-4 md:grid-cols-3">
+              <MiniCard title="Lean Tools" text="DMAIC • VSM • 5S • Kaizen • Standard Work" />
+              <MiniCard title="Data" text="Excel • Power BI • KPI Tracking • Pareto" />
+              <MiniCard title="Quality" text="PFMEA • SPC (Cp/Cpk) • MSA • RCA/8D" />
             </div>
           </div>
-        </section>
 
-        {/* Projects */}
-        <section id="projects" className="rounded-2xl bg-white p-8 shadow">
-          <h2 className="text-xl font-semibold">Project Highlights</h2>
+          {/* Chart + Impact */}
+          <div className="grid gap-5">
+            <CardGlow title="Skill Strength Map" subtitle="Visual snapshot of my core strengths">
+              <div className="h-[260px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <RadarChart data={skillsRadar}>
+                    <PolarGrid stroke="rgba(255,255,255,0.18)" />
+                    <PolarAngleAxis dataKey="skill" tick={{ fill: "rgba(255,255,255,0.75)", fontSize: 12 }} />
+                    <Radar
+                      dataKey="score"
+                      stroke="rgba(34,211,238,1)"
+                      fill="rgba(217,70,239,0.35)"
+                      fillOpacity={1}
+                    />
+                  </RadarChart>
+                </ResponsiveContainer>
+              </div>
+            </CardGlow>
 
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <h3 className="text-base font-bold">Assembly Line Optimization</h3>
-              <p className="mt-2 text-sm text-gray-700">
-                Used time studies and workload balancing to improve line stability and increase throughput.
+            <CardGlow title="Impact Metrics" subtitle="Example outcomes (edit anytime)">
+              <div className="h-[240px] w-full">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={impactBars} margin={{ top: 10, right: 10, left: -10, bottom: 10 }}>
+                    <CartesianGrid stroke="rgba(255,255,255,0.12)" />
+                    <XAxis dataKey="metric" tick={{ fill: "rgba(255,255,255,0.75)", fontSize: 12 }} />
+                    <YAxis tick={{ fill: "rgba(255,255,255,0.75)", fontSize: 12 }} />
+                    <Tooltip
+                      contentStyle={{ background: "rgba(2,6,23,0.95)", border: "1px solid rgba(255,255,255,0.12)" }}
+                      labelStyle={{ color: "white" }}
+                    />
+                    <Bar dataKey="value" fill="rgba(52,211,153,0.85)" radius={[10, 10, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              <p className="mt-3 text-xs text-white/60">
+                Tip: Replace with your exact metrics from Polaris/Tech Mahindra once you finalize numbers.
               </p>
-              <div className="mt-4 text-sm text-gray-600">
-                <span className="font-medium text-gray-900">Tools:</span> Time Study, Line Balancing, Standard Work
+            </CardGlow>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <Section id="about" title="About" subtitle="My story in one minute">
+        <div className="grid gap-5 md:grid-cols-2">
+          <FancyCard
+            title="What I do"
+            body="I bridge data + shop-floor execution. I measure work, identify bottlenecks, redesign flow, standardize best practices, and track KPIs so improvements stay sustainable."
+            gradient="from-cyan-500/20 via-fuchsia-500/15 to-emerald-500/15"
+          />
+          <FancyCard
+            title="How I work"
+            body="Start with CTQs → measure time & losses → analyze root causes → implement countermeasures → lock with standard work + visual controls → track with dashboards."
+            gradient="from-emerald-500/20 via-cyan-500/15 to-fuchsia-500/15"
+          />
+        </div>
+      </Section>
+
+      {/* Experience */}
+      <Section id="experience" title="Experience" subtitle="Where I created manufacturing impact">
+        <div className="grid gap-5">
+          <ExperienceCard
+            role="Production Intern"
+            company="Polaris Industries"
+            meta="Roseau, MN"
+            bullets={[
+              "Conducted time studies to identify process gaps and rebalance work content.",
+              "Used VSM + spaghetti diagrams to reduce motion waste and improve flow.",
+              "Created KPI dashboards for cycle time, FPY, scrap, and OEE to drive daily actions.",
+            ]}
+            accent="cyan"
+          />
+          <ExperienceCard
+            role="Design Engineer → Senior → Lead Design Engineer"
+            company="Tech Mahindra"
+            meta="2019–2023"
+            bullets={[
+              "Applied DFMA to reduce complexity and improve manufacturability.",
+              "Supported APQP/PPAP readiness and led RCA using 5 Whys / 8D.",
+              "Partnered cross-functionally across quality, manufacturing, and supply chain.",
+            ]}
+            accent="fuchsia"
+          />
+        </div>
+      </Section>
+
+      {/* Projects */}
+      <Section id="projects" title="Projects" subtitle="Clickable, presentation-style blocks">
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.map((p) => (
+            <ProjectCard key={p.title} {...p} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Skills */}
+      <Section id="skills" title="Skills" subtitle="My toolkit for CI + manufacturing excellence">
+        <div className="grid gap-3 md:grid-cols-3">
+          {[
+            "Lean Six Sigma (DMAIC, DMADV)",
+            "Time & Motion Studies",
+            "Line Balancing / Capacity",
+            "Takt / Cycle / Lead Time",
+            "Value Stream Mapping",
+            "Standard Work / SOPs",
+            "OEE / Downtime Reduction",
+            "SPC (Cp, Cpk) & MSA (Gauge R&R)",
+            "PFMEA / Control Plans",
+            "Excel / Power BI Dashboards",
+            "5S / Kaizen / Gemba",
+            "DFMA • SolidWorks • Creo • AutoCAD",
+          ].map((s, i) => (
+            <div
+              key={s}
+              className={`rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/85 hover:bg-white/10 transition ${
+                i % 3 === 0
+                  ? "shadow-[0_0_0_1px_rgba(34,211,238,0.25)]"
+                  : i % 3 === 1
+                  ? "shadow-[0_0_0_1px_rgba(217,70,239,0.25)]"
+                  : "shadow-[0_0_0_1px_rgba(52,211,153,0.25)]"
+              }`}
+            >
+              {s}
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Certifications */}
+      <Section id="certifications" title="Certifications" subtitle="Credentials that back my work">
+        <div className="grid gap-5 md:grid-cols-2">
+          {certs.map((c) => (
+            <div key={c.title} className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+              <div className="text-sm font-semibold">{c.title}</div>
+              <div className="mt-2 text-sm text-white/70">{c.org}</div>
+              <div className="mt-3 inline-flex rounded-full bg-white/10 px-3 py-1 text-xs text-white/70">
+                {c.year}
               </div>
             </div>
+          ))}
+        </div>
+      </Section>
 
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <h3 className="text-base font-bold">Scrap / FPY Improvement</h3>
-              <p className="mt-2 text-sm text-gray-700">
-                Analyzed scrap trends and drove corrective actions to improve first-pass yield and reduce defects.
-              </p>
-              <div className="mt-4 text-sm text-gray-600">
-                <span className="font-medium text-gray-900">Tools:</span> Pareto, DMAIC, 5 Whys
-              </div>
-            </div>
+      {/* Contact */}
+      <Section id="contact" title="Contact" subtitle="Let’s talk about manufacturing improvement">
+        <div className="grid gap-5 md:grid-cols-2">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="text-sm font-semibold">Email</div>
+            <a className="mt-2 block text-white/75 hover:text-white" href={email}>
+              YOUR.EMAIL@gmail.com
+            </a>
 
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <h3 className="text-base font-bold">Layout Optimization</h3>
-              <p className="mt-2 text-sm text-gray-700">
-                Reduced unnecessary movement and improved ergonomics through workstation reconfiguration.
-              </p>
-              <div className="mt-4 text-sm text-gray-600">
-                <span className="font-medium text-gray-900">Tools:</span> Spaghetti Diagram, 5S, Visual Controls
-              </div>
-            </div>
+            <div className="mt-6 text-sm font-semibold">LinkedIn</div>
+            <a className="mt-2 block text-white/75 hover:text-white" href={linkedIn} target="_blank">
+              YOUR-LINKEDIN
+            </a>
 
-            <div className="rounded-2xl border border-gray-200 p-6">
-              <h3 className="text-base font-bold">KPI Dashboarding</h3>
-              <p className="mt-2 text-sm text-gray-700">
-                Built dashboards for cycle time, OEE, scrap %, and FPY to enable proactive daily management.
-              </p>
-              <div className="mt-4 text-sm text-gray-600">
-                <span className="font-medium text-gray-900">Tools:</span> Excel, Power BI
-              </div>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={resumePath}
+                target="_blank"
+                className="rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 hover:opacity-95"
+              >
+                Open Resume
+              </a>
+              <a
+                href="#home"
+                className="rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold hover:bg-white/5"
+              >
+                Back to Top
+              </a>
             </div>
           </div>
-        </section>
 
-        {/* Education */}
-        <section className="rounded-2xl bg-white p-8 shadow">
-          <h2 className="text-xl font-semibold">Education & Certification</h2>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-gray-700">
-            <li>MS in Technology (Industrial Management) — University of Central Missouri (Summer 2025)</li>
-            <li>Lean Six Sigma Green Belt Certified</li>
-          </ul>
-        </section>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="text-sm font-semibold">Quick Pitch</div>
+            <p className="mt-3 text-sm text-white/75 leading-relaxed">
+              I bring a CI mindset + hands-on manufacturing execution. I use Lean tools, data analysis, and operator
+              collaboration to improve throughput, reduce variation, and make improvements stick through standard work and KPI visibility.
+            </p>
 
-        {/* Footer */}
-        <footer className="pb-10 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Harish Reddy Chada • Continuous Improvement • Manufacturing Excellence
-        </footer>
-      </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-2">
+              <Chip text="DMAIC • Kaizen" />
+              <Chip text="VSM • Flow" />
+              <Chip text="OEE • Downtime" />
+              <Chip text="Dashboards" />
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <footer className="mx-auto max-w-6xl px-6 pb-10 pt-2 text-center text-xs text-white/50">
+        © {new Date().getFullYear()} Harish Reddy Chada • Built with Next.js
+      </footer>
     </main>
+  );
+}
+
+/* ---------- UI helpers ---------- */
+
+function Section({
+  id,
+  title,
+  subtitle,
+  children,
+}: {
+  id: string;
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mb-6">
+        <h2 className="text-2xl font-extrabold">{title}</h2>
+        <p className="mt-2 text-sm text-white/70">{subtitle}</p>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function CardGlow({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string;
+  subtitle: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.06)] hover:bg-white/10 transition">
+      <div className="text-sm font-semibold">{title}</div>
+      <div className="mt-1 text-xs text-white/65">{subtitle}</div>
+      <div className="mt-4">{children}</div>
+    </div>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
+      <div className="text-lg font-extrabold">{value}</div>
+      <div className="mt-1 text-[11px] text-white/70">{label}</div>
+    </div>
+  );
+}
+
+function MiniCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="rounded-3xl border border-white/10 bg-white/5 p-4 hover:bg-white/10 transition">
+      <div className="text-xs font-semibold text-white/80">{title}</div>
+      <div className="mt-2 text-sm text-white/70">{text}</div>
+    </div>
+  );
+}
+
+function FancyCard({
+  title,
+  body,
+  gradient,
+}: {
+  title: string;
+  body: string;
+  gradient: string;
+}) {
+  return (
+    <div className={`rounded-3xl border border-white/10 bg-gradient-to-br ${gradient} p-6 hover:brightness-110 transition`}>
+      <div className="text-sm font-semibold">{title}</div>
+      <p className="mt-3 text-sm text-white/75 leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+function ExperienceCard({
+  role,
+  company,
+  meta,
+  bullets,
+  accent,
+}: {
+  role: string;
+  company: string;
+  meta: string;
+  bullets: string[];
+  accent: "cyan" | "fuchsia" | "emerald";
+}) {
+  const accentRing =
+    accent === "cyan"
+      ? "shadow-[0_0_0_1px_rgba(34,211,238,0.35)]"
+      : accent === "fuchsia"
+      ? "shadow-[0_0_0_1px_rgba(217,70,239,0.35)]"
+      : "shadow-[0_0_0_1px_rgba(52,211,153,0.35)]";
+
+  return (
+    <div className={`rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition ${accentRing}`}>
+      <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+        <div>
+          <div className="text-base font-extrabold">{role}</div>
+          <div className="text-sm text-white/70">{company}</div>
+        </div>
+        <div className="text-xs text-white/60">{meta}</div>
+      </div>
+
+      <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-white/75">
+        {bullets.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ProjectCard({
+  title,
+  desc,
+  tags,
+  highlights,
+  badge,
+}: {
+  title: string;
+  desc: string;
+  tags: string[];
+  highlights: string[];
+  badge: string;
+}) {
+  return (
+    <div className="group rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/10 transition">
+      <div className="flex items-center justify-between gap-3">
+        <div className="text-base font-extrabold">{title}</div>
+        <div className="rounded-full bg-gradient-to-r from-cyan-400/20 to-fuchsia-500/20 px-3 py-1 text-[11px] text-white/80 border border-white/10">
+          {badge}
+        </div>
+      </div>
+
+      <p className="mt-3 text-sm text-white/75 leading-relaxed">{desc}</p>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        {tags.map((t) => (
+          <span key={t} className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] text-white/70">
+            {t}
+          </span>
+        ))}
+      </div>
+
+      <div className="mt-5 rounded-2xl border border-white/10 bg-white/5 p-4">
+        <div className="text-xs font-semibold text-white/80">Highlights</div>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-white/70">
+          {highlights.map((h) => (
+            <li key={h}>{h}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div className="mt-5 text-xs text-white/55 group-hover:text-white/70 transition">
+        Presentation-style card • Hover to pop
+      </div>
+    </div>
+  );
+}
+
+function Chip({ text }: { text: string }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white/75 hover:bg-white/10 transition">
+      {text}
+    </div>
   );
 }

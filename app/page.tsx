@@ -1,91 +1,152 @@
 export default function Page() {
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900">
-      <div className="max-w-5xl mx-auto px-6 py-12 space-y-12">
+    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <div className="mx-auto max-w-6xl px-6 py-14 space-y-16">
 
-        {/* Header */}
-        <section className="text-center space-y-4">
-          <h1 className="text-4xl font-bold">Harish Reddy Chada</h1>
-          <p className="text-lg text-gray-600">
-            Lean Six Sigma Green Belt | Industrial Engineer | Continuous Improvement
+        {/* HERO */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-10">
+          <p className="text-sm text-white/70">
+            Industrial Engineer • Lean Six Sigma Green Belt
           </p>
-          <div className="flex justify-center gap-4">
+
+          <h1 className="mt-3 text-4xl md:text-5xl font-extrabold">
+            Harish Reddy Chada
+          </h1>
+
+          <p className="mt-4 text-white/80 max-w-2xl leading-relaxed">
+            I improve manufacturing throughput, quality, and operational flow
+            using time studies, line balancing, value stream mapping,
+            and KPI dashboards (Excel & Power BI).
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/harish-reddy-chada"
               target="_blank"
-              className="px-4 py-2 bg-black text-white rounded-xl shadow"
+              className="rounded-2xl bg-gradient-to-r from-cyan-400 to-fuchsia-500 px-5 py-3 text-sm font-semibold text-slate-950"
             >
               LinkedIn
             </a>
+
             <a
-              href="mailto:your.email@gmail.com"
-              className="px-4 py-2 border rounded-xl shadow"
+              href="mailto:harishreddychada33@gmail.com"
+              className="rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold hover:bg-white/5"
             >
-              Contact Me
+              Email
+            </a>
+
+            <a
+              href="/Harish_Reddy_Chada_Resume.pdf"
+              target="_blank"
+              className="rounded-2xl border border-white/15 px-5 py-3 text-sm font-semibold hover:bg-white/5"
+            >
+              Download Resume
             </a>
           </div>
         </section>
 
-        {/* About */}
-        <section className="bg-white p-8 rounded-2xl shadow">
-          <h2 className="text-2xl font-semibold mb-4">About Me</h2>
-          <p className="text-gray-700 leading-relaxed">
-            I am a Lean Six Sigma Green Belt–certified Industrial Engineer with over 5 years of experience
-            improving throughput, quality, and efficiency in high-volume manufacturing environments.
-            I specialize in time studies, line balancing, value stream mapping, layout optimization,
-            and KPI dashboards using Excel and Power BI.
+        {/* PROFESSIONAL SUMMARY */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <h2 className="text-2xl font-extrabold">Professional Summary</h2>
+          <p className="mt-4 text-white/80 leading-relaxed">
+            Lean Six Sigma Green Belt Industrial Engineer with 5+ years of
+            experience in high-volume manufacturing environments. Skilled in
+            time studies, line balancing, VSM-driven improvements, PFMEA,
+            and building data-driven dashboards to drive sustainable
+            continuous improvement.
           </p>
         </section>
 
-        {/* Skills */}
-        <section className="bg-white p-8 rounded-2xl shadow">
-          <h2 className="text-2xl font-semibold mb-6">Core Competencies</h2>
-          <div className="grid md:grid-cols-3 gap-4">
+        {/* SKILLS */}
+        <section>
+          <h2 className="text-2xl font-extrabold mb-6">Core Skills</h2>
+
+          <div className="grid gap-5 md:grid-cols-3">
             {[
-              "Lean Six Sigma (DMAIC)",
-              "Time & Motion Studies",
-              "Line Balancing",
-              "Value Stream Mapping",
-              "OEE Improvement",
-              "SPC (Cp, Cpk)",
-              "PFMEA",
-              "5S & Kaizen",
-              "Power BI Dashboards",
+              "DMAIC / VSM / 5S / Kaizen",
+              "Time Study & Line Balancing",
+              "SPC (Cp, Cpk) & MSA",
+              "PFMEA & Control Plans",
+              "Excel & Power BI Dashboards",
+              "OEE / Scrap / FPY Improvement",
             ].map((skill) => (
-              <div key={skill} className="bg-gray-100 p-4 rounded-xl text-sm">
+              <div
+                key={skill}
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm hover:bg-white/10 transition"
+              >
                 {skill}
               </div>
             ))}
           </div>
         </section>
 
-        {/* Experience */}
-        <section className="bg-white p-8 rounded-2xl shadow">
-          <h2 className="text-2xl font-semibold mb-6">Experience</h2>
+        {/* EXPERIENCE */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <h2 className="text-2xl font-extrabold">Experience</h2>
 
-          <div className="space-y-6">
+          <div className="mt-8 space-y-8 text-sm text-white/80">
+
             <div>
-              <h3 className="text-lg font-bold">Production Intern – Polaris Industries</h3>
-              <ul className="list-disc pl-6 text-gray-700 mt-2 space-y-1">
-                <li>Conducted time studies and improved line balance.</li>
-                <li>Reduced waste using VSM and layout redesign.</li>
-                <li>Developed KPI dashboards for cycle time and FPY tracking.</li>
+              <h3 className="font-bold text-lg text-white">
+                Production Intern — Polaris Industries
+              </h3>
+              <p className="text-xs text-white/60">Roseau, MN</p>
+              <ul className="mt-3 list-disc pl-5 space-y-2">
+                <li>Conducted time studies to improve line balance and workflow efficiency.</li>
+                <li>Implemented VSM improvements reducing non-value-added activities.</li>
+                <li>Built KPI dashboards tracking cycle time, scrap %, and FPY.</li>
               </ul>
             </div>
 
             <div>
-              <h3 className="text-lg font-bold">Lead Design Engineer – Tech Mahindra</h3>
-              <ul className="list-disc pl-6 text-gray-700 mt-2 space-y-1">
-                <li>Applied DFMA principles to improve manufacturability.</li>
-                <li>Led RCA using 5 Whys and 8D methodology.</li>
-                <li>Improved product quality and reduced rework.</li>
+              <h3 className="font-bold text-lg text-white">
+                Lead Design Engineer — Tech Mahindra
+              </h3>
+              <p className="text-xs text-white/60">2019 – 2023</p>
+              <ul className="mt-3 list-disc pl-5 space-y-2">
+                <li>Applied DFMA to enhance manufacturability.</li>
+                <li>Led root cause analysis using 5 Whys and 8D.</li>
+                <li>Supported APQP and PPAP documentation.</li>
               </ul>
+            </div>
+
+          </div>
+        </section>
+
+        {/* CERTIFICATIONS */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <h2 className="text-2xl font-extrabold">Certifications</h2>
+
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+              <h3 className="font-bold">Lean Six Sigma Green Belt</h3>
+              <p className="mt-2 text-sm text-white/70">
+                Certified Green Belt with applied DMAIC project experience.
+              </p>
+            </div>
+
+            <div className="rounded-2xl bg-white/5 p-6 border border-white/10">
+              <h3 className="font-bold">
+                MS in Technology (Industrial Management)
+              </h3>
+              <p className="mt-2 text-sm text-white/70">
+                University of Central Missouri — Summer 2025
+              </p>
             </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="text-center text-gray-500 text-sm pt-8">
+        {/* CONTACT */}
+        <section className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <h2 className="text-2xl font-extrabold">Contact</h2>
+          <div className="mt-4 text-sm text-white/80 space-y-2">
+            <p>Email: harishreddychada33@gmail.com</p>
+            <p>LinkedIn: https://www.linkedin.com/in/harish-reddy-chada</p>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className="text-center text-xs text-white/50 pt-10">
           © {new Date().getFullYear()} Harish Reddy Chada
         </footer>
 
