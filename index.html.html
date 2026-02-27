@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harish Reddy Chada | Industrial Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060b18;
+    --surface: #0d1526;
+    --surface2: #152035;
+    --gold: #e8a838;
+    --gold-light: #ffd166;
+    --teal: #06d6a0;
+    --teal-dark: #04a07a;
+    --accent: #4f8ef7;
+    --accent2: #f72585;
+    --text: #eef2ff;
+    --muted: #7b8cad;
+    --border: rgba(232,168,56,0.18);
+    --coral: #ff7b5e;
+    --violet: #a78bfa;
+    --sky: #38bdf8;
+    --lime: #a3e635;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(10,14,26,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none;
+    font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 4rem 4rem;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(79,142,247,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 20% 80%, rgba(232,168,56,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 40% at 50% 10%, rgba(6,214,160,0.05) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.025;
+    background-image: linear-gradient(rgba(79,142,247,0.6) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(79,142,247,0.6) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; max-width: 700px; }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(79,142,247,0.1); border: 1px solid rgba(79,142,247,0.3);
+    padding: 0.4rem 1rem; border-radius: 2rem;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05; font-weight: 900;
+    color: var(--text);
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-name span { color: var(--gold); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem; color: #c8d6f5;
+    margin: 1.2rem 0 2rem;
+    line-height: 1.8; max-width: 580px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .btn {
+    padding: 0.85rem 2rem; border-radius: 0.4rem;
+    font-family: 'DM Sans', sans-serif; font-weight: 600;
+    font-size: 0.9rem; cursor: pointer; text-decoration: none;
+    transition: all 0.3s; letter-spacing: 0.04em;
+  }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #060b18; border: none;
+  }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(232,168,56,0.4); }
+  .btn-outline {
+    background: transparent; color: var(--teal);
+    border: 1.5px solid var(--teal);
+  }
+  .btn-outline:hover { background: rgba(6,214,160,0.1); transform: translateY(-2px); }
+
+  .hero-stats {
+    display: flex; gap: 3rem; margin-top: 3.5rem;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 700; color: var(--gold-light);
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.2rem; }
+
+  /* SECTIONS */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    color: var(--text); margin-bottom: 3rem;
+  }
+  .section-title span { color: var(--gold); }
+
+  /* ACHIEVEMENTS */
+  .achievements { background: var(--surface); }
+  .achieve-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;
+  }
+  .achieve-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 1rem; padding: 2rem;
+    position: relative; overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .achieve-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+  .achieve-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--teal), var(--gold));
+  }
+  .achieve-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900; color: var(--accent);
+    line-height: 1;
+  }
+  .achieve-desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5; }
+  .achieve-tag {
+    display: inline-block; margin-top: 1rem;
+    background: rgba(232,168,56,0.1); color: var(--gold);
+    font-size: 0.72rem; padding: 0.25rem 0.75rem; border-radius: 1rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  /* EXPERIENCE */
+  .exp-timeline { position: relative; }
+  .exp-timeline::before {
+    content: ''; position: absolute; left: 200px; top: 0; bottom: 0; width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--accent), var(--teal), transparent);
+    opacity: 0.4;
+  }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 2.5rem; margin-bottom: 3.5rem;
+  }
+  .exp-meta { text-align: right; padding-right: 2.5rem; padding-top: 0.2rem; }
+  .exp-company {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: var(--teal);
+  }
+  .exp-period {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem; color: var(--muted); margin-top: 0.3rem;
+  }
+  .exp-location { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+  .exp-body {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 1rem; padding: 2rem; position: relative;
+  }
+  .exp-body::before {
+    content: ''; position: absolute; left: -8px; top: 1.5rem;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--bg);
+  }
+  .exp-role {
+    font-size: 1.2rem; font-weight: 600; color: var(--text); margin-bottom: 1.2rem;
+  }
+  .exp-achievements { list-style: none; }
+  .exp-achievements li {
+    padding: 0.5rem 0; color: var(--muted); font-size: 0.9rem; line-height: 1.6;
+    display: flex; gap: 0.75rem;
+  }
+  .exp-achievements li::before { content: '▸'; color: var(--teal); flex-shrink: 0; margin-top: 0.05rem; }
+  .highlight { color: var(--gold-light); font-weight: 600; }
+
+  /* SKILLS */
+  .skills-section { background: var(--surface); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .skill-group h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem; padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(79,142,247,0.25);
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .skill-tag {
+    background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+    color: var(--text); padding: 0.4rem 0.9rem; border-radius: 0.35rem;
+    font-size: 0.82rem; transition: all 0.2s;
+  }
+  .skill-tag:hover { background: rgba(79,142,247,0.18); border-color: var(--accent); color: var(--sky); }
+
+  /* CERTIFICATIONS */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .cert-card {
+    background: linear-gradient(135deg, var(--surface2), rgba(26,34,53,0.8));
+    border: 1px solid var(--border); border-radius: 1.2rem; padding: 2.5rem;
+    text-align: center; position: relative; overflow: hidden;
+    transition: all 0.3s;
+  }
+  .cert-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(79,142,247,0.2); }
+  .cert-badge {
+    width: 80px; height: 80px; margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+  }
+  .cert-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem;
+  }
+  .cert-issuer { font-size: 0.85rem; color: var(--accent); margin-bottom: 0.5rem; }
+  .cert-date { font-family: 'Space Mono', monospace; font-size: 0.72rem; color: var(--muted); }
+  .cert-id { font-family: 'Space Mono', monospace; font-size: 0.68rem; color: var(--muted); margin-top: 0.3rem; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+  .edu-card {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 1rem; padding: 2rem;
+    border-left: 4px solid var(--accent);
+  }
+  .edu-degree { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.4rem; }
+  .edu-school { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--gold-light); margin-bottom: 0.4rem; }
+  .edu-detail { font-size: 0.85rem; color: var(--muted); }
+  .gpa-badge {
+    display: inline-block; margin-top: 1rem;
+    background: linear-gradient(135deg, rgba(6,214,160,0.15), rgba(6,214,160,0.05));
+    border: 1px solid rgba(6,214,160,0.3); color: var(--teal);
+    padding: 0.35rem 1rem; border-radius: 1rem; font-weight: 600; font-size: 0.85rem;
+  }
+
+  /* RESUME */
+  .resume-section { background: var(--surface); }
+  .resume-box {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 1.2rem; padding: 3rem; text-align: center; max-width: 600px; margin: 0 auto;
+  }
+  .resume-icon { font-size: 4rem; margin-bottom: 1.5rem; }
+  .resume-box h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--text); margin-bottom: 0.8rem; }
+  .resume-box p { color: var(--muted); margin-bottom: 2rem; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1000px; margin: 0 auto;
+  }
+  .contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 1.5rem; }
+  .contact-detail {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 1.2rem; color: var(--muted); font-size: 0.9rem;
+  }
+  .contact-icon {
+    width: 40px; height: 40px; border-radius: 0.5rem;
+    background: rgba(201,168,76,0.1); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-group label { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+  .form-group input, .form-group textarea, .form-group select {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); padding: 0.85rem 1rem; border-radius: 0.5rem;
+    font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+    transition: border-color 0.3s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--gold);
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group select option { background: var(--surface2); }
+  .form-success {
+    display: none; background: rgba(45,212,191,0.1); border: 1px solid rgba(45,212,191,0.3);
+    color: var(--teal); padding: 1rem; border-radius: 0.5rem; text-align: center; font-size: 0.9rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 0.82rem;
+    font-family: 'Space Mono', monospace;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: linear-gradient(var(--accent), var(--teal)); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+    .exp-timeline::before { display: none; }
+    .exp-item { grid-template-columns: 1fr; }
+    .exp-meta { text-align: left; padding-right: 0; }
+    .exp-body::before { display: none; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">HRC</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Open to Opportunities</div>
+    <h1 class="hero-name">Harish<br>Reddy <span>Chada</span></h1>
+    <p class="hero-title">An Industrial Engineer · Certified Lean Six Sigma Green Belt &amp; CAD Engineer. A Continuous Improvement enthusiast driving operational excellence in Manufacturing Industries.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn btn-gold">Get In Touch</a>
+      <a href="#experience" class="btn btn-outline">View My Work</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div>
+        <div class="stat-num">$1.2M</div>
+        <div class="stat-label">Cost Savings</div>
+      </div>
+      <div>
+        <div class="stat-num">17%</div>
+        <div class="stat-label">Yield Improvement</div>
+      </div>
+      <div>
+        <div class="stat-num">18%</div>
+        <div class="stat-label">NVA Time Reduced</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+  <div class="section-label">Impact at a Glance</div>
+  <div class="section-title">Key <span>Throughputs</span></div>
+  <div class="achieve-grid">
+    <div class="achieve-card">
+      <div class="achieve-num">12%</div>
+      <div class="achieve-desc">Increase in line throughput via Kaizen-driven layout redesign and standardized work at Polaris Industries.</div>
+      <div class="achieve-tag">Kaizen · VSM</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">18%</div>
+      <div class="achieve-desc">Reduction in non-value-added time through future-state VSM, workstation consolidation and task balancing.</div>
+      <div class="achieve-tag">VSM · Lean</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">17%</div>
+      <div class="achieve-desc">First-pass yield improvement by applying DMAIC, Gemba walks, and root cause analysis methodologies.</div>
+      <div class="achieve-tag">DMAIC · RCA</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">15%</div>
+      <div class="achieve-desc">Reduction in assembly errors by creating SOPs, Standard Work Combination Sheets, and visual instructions.</div>
+      <div class="achieve-tag">SOP · Standard Work</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">15%</div>
+      <div class="achieve-desc">Downtime reduction using production KPI analysis (cycle time, takt time, OEE) in Excel and Power BI.</div>
+      <div class="achieve-tag">OEE · Power BI</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">$1.2M</div>
+      <div class="achieve-desc">Annual cost savings at Tech Mahindra via design standardization and reuse of validated components.</div>
+      <div class="achieve-tag">Cost Reduction</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">15%</div>
+      <div class="achieve-desc">Material waste reduction through fabrication process optimization and nesting improvements.</div>
+      <div class="achieve-tag">Process Optimization</div>
+    </div>
+    <div class="achieve-card">
+      <div class="achieve-num">3.75</div>
+      <div class="achieve-desc">GPA in Master of Science, Industrial Technology — University of Central Missouri, Class of May 2025.</div>
+      <div class="achieve-tag">Academic Excellence</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Journey</div>
+  <div class="section-title">Professional <span>Experience</span></div>
+  <div class="exp-timeline">
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-company">Polaris Industries</div>
+        <div class="exp-period">Jan 2025 – Apr 2025</div>
+        <div class="exp-location">📍 Roseau, MN</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Production Intern</div>
+        <ul class="exp-achievements">
+          <li>Conducted time & motion studies and bottleneck analysis on assembly lines to identify inefficiencies and cycle-time losses.</li>
+          <li>Led Kaizen events on layout redesign and standardized work, achieving <span class="highlight">+12% line throughput</span>.</li>
+          <li>Developed current- and future-state VSMs, cutting non-value-added time by <span class="highlight">18%</span> via workstation consolidation.</li>
+          <li>Created SOPs, Standard Work Combination Sheets, and visual instructions — reducing assembly errors by <span class="highlight">15%</span>.</li>
+          <li>Applied DMAIC, Gemba walks, and RCA to improve first-pass yield by <span class="highlight">17%</span>.</li>
+          <li>Analyzed production KPIs (cycle time, takt time, OEE) with Excel & Power BI, driving a <span class="highlight">15% downtime reduction</span>.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-company">Tech Mahindra</div>
+        <div class="exp-period">Jan 2019 – May 2023</div>
+        <div class="exp-location">📍 Hyderabad, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Mechanical / Continuous Improvement Engineer</div>
+        <ul class="exp-achievements">
+          <li>Led cross-functional CI initiatives using Lean Six Sigma tools — DMAIC, VSM, waste analysis — to improve shop-floor production flow.</li>
+          <li>Eliminated non-value-added activities via standard work, line balancing, and process optimization for improved throughput.</li>
+          <li>Drove RCA and CAPA to resolve recurring assembly and fit-up issues, improving first-pass yield and reducing rework.</li>
+          <li>Supported APQP and PPAP activities: developed PFMEAs, Control Plans, and Process Flow Diagrams for compliance.</li>
+          <li>Achieved <span class="highlight">$1.2M annual cost savings</span> through design standardization and component reuse across programs.</li>
+          <li>Reduced material waste by <span class="highlight">15%</span> via fabrication process optimization and nesting improvements.</li>
+          <li>Improved supplier alignment, optimizing lead times and reducing material shortages and excess inventory.</li>
+          <li>Provided mechanical design support using SolidWorks, Creo, and AutoCAD with DFMA principles.</li>
+          <li>Maintained accurate BOMs and managed engineering changes in ARAS PLM for improved production planning.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="section-label">Technical Toolkit</div>
+  <div class="section-title">Core <span>Competencies</span></div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <h3>Lean & CI Methodologies</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">DMAIC</span>
+        <span class="skill-tag">Kaizen</span>
+        <span class="skill-tag">Value Stream Mapping</span>
+        <span class="skill-tag">5S / 6S</span>
+        <span class="skill-tag">SMED</span>
+        <span class="skill-tag">PDCA</span>
+        <span class="skill-tag">Kanban</span>
+        <span class="skill-tag">Line Balancing</span>
+        <span class="skill-tag">Takt Time</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Quality & Engineering</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">PFMEA</span>
+        <span class="skill-tag">APQP / PPAP</span>
+        <span class="skill-tag">SPC</span>
+        <span class="skill-tag">MSA</span>
+        <span class="skill-tag">OEE</span>
+        <span class="skill-tag">RCA (5 Whys)</span>
+        <span class="skill-tag">Fishbone</span>
+        <span class="skill-tag">CAPA</span>
+        <span class="skill-tag">Gemba Walks</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Software & Tools</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Excel</span>
+        <span class="skill-tag">Minitab</span>
+        <span class="skill-tag">SolidWorks</span>
+        <span class="skill-tag">Creo</span>
+        <span class="skill-tag">AutoCAD</span>
+        <span class="skill-tag">ARAS PLM</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Manufacturing & Design</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Time & Motion Studies</span>
+        <span class="skill-tag">Standardized Work</span>
+        <span class="skill-tag">Factory Layout</span>
+        <span class="skill-tag">Ergonomics</span>
+        <span class="skill-tag">DFMA</span>
+        <span class="skill-tag">BOM Management</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Certifications &amp; <span>Education</span></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-badge">🏅</div>
+      <div class="cert-name">Lean Six Sigma Green Belt</div>
+      <div class="cert-issuer">Council for Six Sigma Certification (CSSC)</div>
+      <div class="cert-date">Issued: February 2, 2025</div>
+      <div class="cert-id">Cert No: SQeGUiDr0P</div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-badge">📐</div>
+      <div class="cert-name">Certified CAD Engineer</div>
+      <div class="cert-issuer">Professional CAD Certification</div>
+      <div class="cert-date">SolidWorks · Creo · AutoCAD</div>
+      <div class="cert-id">Active Certification</div>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem;">
+    <div class="section-label" style="margin-bottom: 0.6rem;">Academic Background</div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-degree">Master of Science, Industrial Technology</div>
+        <div class="edu-school">University of Central Missouri</div>
+        <div class="edu-detail">Warrensburg, MO · Graduated May 2025</div>
+        <div class="gpa-badge">GPA: 3.75 / 4.0</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">Bachelor of Technology, Mechanical Engineering</div>
+        <div class="edu-school">Jawaharlal Nehru Technological University (JNTU)</div>
+        <div class="edu-detail">Hyderabad, India · Graduated May 2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section class="resume-section" id="resume">
+  <div class="section-label">Document</div>
+  <div class="section-title">My <span>Resume</span></div>
+  <div class="resume-box">
+    <div class="resume-icon">📄</div>
+    <h3>Harish Reddy Chada</h3>
+    <p>Industrial Engineer · Lean Six Sigma Green Belt<br>MS Industrial Technology · 5+ Years Experience</p>
+    <a href="Harish_Reddy_Chada_Resume_pdf.pdf" download="Harish_Reddy_Chada_Resume.pdf" class="btn btn-gold" style="display:inline-block; margin-bottom: 1rem;">⬇ Download Resume (PDF)</a>
+    <br>
+    <a href="Harish_Reddy_Chada_Resume_pdf.pdf" target="_blank" class="btn btn-outline" style="display:inline-block;">👁 View Resume</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <div class="section-title">Get In <span>Touch</span></div>
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h3>Reach Out Directly</h3>
+      <p style="color: var(--muted); margin-bottom: 2rem; line-height: 1.7;">I'm actively seeking full-time opportunities in Industrial Engineering, Continuous Improvement, and Manufacturing Operations. Let's connect!</p>
+      <div class="contact-detail">
+        <div class="contact-icon">📞</div>
+        <div><strong style="color:var(--text)">(913) 713-3996</strong><br><small>Available Mon–Fri</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉️</div>
+        <div><strong style="color:var(--text)">harishreddychada33@gmail.com</strong><br><small>Usually responds within 24 hrs</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🔗</div>
+        <div><a href="https://www.linkedin.com/in/harish-reddy-chada" target="_blank" style="color:var(--teal); text-decoration:none; font-weight:600;">linkedin.com/in/harish-reddy-chada</a><br><small>Connect on LinkedIn</small></div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div><strong style="color:var(--text)">Overland Park, KS</strong><br><small>Open to relocation</small></div>
+      </div>
+    </div>
+
+    <div>
+      <div id="contact-form" class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name *</label>
+            <input type="text" id="rec-name" placeholder="Jane Smith" required>
+          </div>
+          <div class="form-group">
+            <label>Company *</label>
+            <input type="text" id="rec-company" placeholder="Acme Corp" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" id="rec-email" placeholder="jane@company.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone (Optional)</label>
+          <input type="tel" id="rec-phone" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Role / Opportunity</label>
+          <select id="rec-role">
+            <option value="">-- Select Opportunity Type --</option>
+            <option>Full-Time Position</option>
+            <option>Contract / Consulting</option>
+            <option>Internship</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Your Message *</label>
+          <textarea id="rec-message" placeholder="Tell me about the opportunity or just say hello..."></textarea>
+        </div>
+        <button onclick="submitForm()" class="btn btn-gold" style="width:100%; font-size:1rem; padding:1rem;">Send Message ✉️</button>
+        <div class="form-success" id="form-success">
+          ✅ Message sent! Harish will get back to you within 24 hours.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Harish Reddy Chada · Industrial Engineer · Lean Six Sigma Green Belt</p>
+  <p style="margin-top:0.4rem; font-size:0.7rem;">Built with care · Powered by passion for operational excellence</p>
+</footer>
+
+<script>
+function submitForm() {
+  const name = document.getElementById('rec-name').value.trim();
+  const email = document.getElementById('rec-email').value.trim();
+  const message = document.getElementById('rec-message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in all required fields (Name, Email, Message).');
+    return;
+  }
+  const subject = encodeURIComponent('Recruiter Inquiry - ' + document.getElementById('rec-role').value);
+  const company = document.getElementById('rec-company').value;
+  const phone = document.getElementById('rec-phone').value;
+  const role = document.getElementById('rec-role').value;
+  const body = encodeURIComponent(
+    `Hi Harish,\n\nMy name is ${name} from ${company}.\n${phone ? 'Phone: ' + phone + '\n' : ''}${role ? 'Opportunity Type: ' + role + '\n' : ''}\n${message}\n\nBest regards,\n${name}`
+  );
+  window.location.href = `mailto:harishreddychada33@gmail.com?subject=${subject}&body=${body}`;
+  document.getElementById('form-success').style.display = 'block';
+}
+
+// Intersection Observer for fade-in animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.achieve-card, .exp-item, .skill-group, .cert-card, .edu-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
